@@ -89,85 +89,42 @@ while True:
     cantidad_total += cantidad
     
     if opcion == 1:
-        total_bruto = precio_pokebola * cantidad
+        total_bruto += precio_pokebola * cantidad
     elif opcion == 2:
-        total_bruto = precio_pocion * cantidad
+        total_bruto += precio_pocion * cantidad
     elif opcion == 3:
-        total_bruto = precio_revivir * cantidad
-        cantidad_revivir = cantidad
+        total_bruto += precio_revivir * cantidad
+        cantidad_revivir += cantidad
     elif opcion == 4:
-        total_bruto = precio_baya * cantidad
+        total_bruto += precio_baya * cantidad
     
+
+if not compro_algo:
+    print("No has realizado ninguna compra")
+else:
+    descuento_por_monto = 0
+    descuento_por_cantidad = 0
+    descuento_por_revivir = 0
+
+if total_bruto > 5000:
+    descuento_por_monto = total_bruto * 0.10
+
+if cantidad_total > 10:
+    descuento_por_cantidad = total_bruto * 0.05
+
+if cantidad_revivir >= 3:
+    descuento_por_revivir = (precio_revivir * cantidad_revivir) * 0.15
+
+total_descuentos = descuento_por_cantidad + descuento_por_monto + descuento_por_revivir
+
+total_final = total_bruto - total_descuentos
     
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+print(f"---------- RESUMEN COMPRA -----------")
+print(f"Total Bruto: ${total_bruto:.0f}")
+print(f"Total Descuentos Aplicados: ${total_descuentos:.0f}")
+print(f"Total Final a pagar: ${total_final:.0f}")
+print(f"Cantidad de Productos comprados: {cantidad_total:.0f}")
 
 
 
